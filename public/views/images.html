@@ -1,0 +1,23 @@
+<div id="images-page">
+    <h2>Manage images</h2>
+
+    <div data-ng-show="!loading">
+        <input type="file" id="file-picker">
+        <button data-ng-click="upload()">Upload</button>
+    </div>
+
+    <div data-ng-show="loading">Loading...</div>
+    <div data-ng-show="!loading && images.length < 1">
+        There are no images yet.
+    </div>
+
+    <div data-ng-show="!loading && images.length > 0">
+        <div data-ng-repeat="item in images">
+            <p>
+                <span data-ng-bind="item.key"></span>
+                <a href data-ng-click="remove(item.key)">remove</a>
+            </p>
+            <img data-ng-src="{{ item.url }}">
+        </div>
+    </div>
+</div>

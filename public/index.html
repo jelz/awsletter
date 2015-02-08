@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>awsletter</title>
+    </head>
+    <body data-ng-cloak>
+        <h1>awsletter</h1>
+
+        <div data-ng-controller="NavCtrl">
+            <div data-ng-show="isLogged">
+                <a href="#/compose">Compose</a>
+                <a href="#/images">Manage images</a>
+                <a href="#/recipients">Recipients</a>
+                <a href data-ng-click="logout()">Logout</a>
+                <span data-ng-show="profile.name">
+                    (<span data-ng-bind="profile.name"></span>)
+                </span>
+            </div>
+        </div>
+
+        <div data-ng-view></div>
+
+        <!-- vendors -->
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.8.min.js"></script>
+        <script src="vendor/angular/angular.min.js"></script>
+        <script src="vendor/angular-route/angular-route.min.js"></script>
+
+        <!-- application -->
+        <script> </script>
+        <script src="app/config.js"></script>
+        <script src="app/bootstrap.js"></script>
+        <script src="app/store.js"></script>
+        <script src="app/amazon.js"></script>
+        <script src="app/repos.js"></script>
+        <script src="app/pages.js"></script>
+
+
+        <!-- login with Amazon -->
+        <div id="amazon-root"></div>
+        <script>
+            (function(d) {
+                var e = d.createElement('script');
+                e.async = true; e.id = 'amazon-login-sdk';
+                e.src = 'https://api-cdn.amazon.com/sdk/login1.js';
+                d.getElementById('amazon-root').appendChild(e);
+            }(document));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+window.AWSLETTER_CONFIG = {
+    amazonLogin: {
+        clientId: 'amzn1.application-oa2-client.{{clientid}}'
+    },
+    aws: {
+        region: 'eu-west-1',
+        roleArn: 'arn:aws:iam::{{awsid}}:role/{{rolename}}',
+        imagesBucket: '{{bucketname}}'
+    }
+};

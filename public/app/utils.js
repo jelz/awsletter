@@ -52,3 +52,13 @@ window.AWSLETTER.factory('LocalStore', function() {
         }
     }
 });
+
+window.AWSLETTER.factory('GlobalStack', function() {
+    var STACK = [];
+
+    return {
+        push: function(val) { STACK.push(val); },
+        pop: function() { if (STACK.length > 0) { return STACK.pop(); } },
+        size: function() { return STACK.length; }
+    };
+});

@@ -7,7 +7,7 @@
         "lambda:InvokeFunction"
       ],
       "Resource": [
-        "arn:aws:lambda:eu-west-1:{{awsid}}:function:{{fnid}}"
+        "arn:aws:lambda:eu-west-1:{{awsid}}:function:{{fnname}}"
       ]
     }
   ]

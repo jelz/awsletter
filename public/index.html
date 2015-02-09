@@ -29,6 +29,16 @@
             </div>
 
             <div data-ng-view id="content"></div>
+
+            <div data-ng-controller="LoaderCtrl" id="loader">
+                <div id="loader-overlay" data-ng-show="visible">
+                    <div class="spinner"></div>
+                    <div class="loader-progress" data-ng-show="progress.goal > 0">
+                        <span data-ng-bind="progress.current"></span> /
+                        <span data-ng-bind="progress.goal"></span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- vendors -->
@@ -40,11 +50,11 @@
         <script> </script>
         <script src="app/config.js"></script>
         <script src="app/bootstrap.js"></script>
-        <script src="app/store.js"></script>
+        <script src="app/utils.js"></script>
         <script src="app/amazon.js"></script>
         <script src="app/repos.js"></script>
+        <script src="app/mail.js"></script>
         <script src="app/pages.js"></script>
-
 
         <!-- login with Amazon -->
         <div id="amazon-root"></div>

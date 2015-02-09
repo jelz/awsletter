@@ -21,8 +21,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-show="!recipients.length">
-                        <td colspan=6"">There are no recipients yet.</td>
+                    <tr data-ng-show="loading || recipients.length < 1">
+                        <td colspan="6" data-ng-show="loading">Loading...</td>
+                        <td colspan="6" data-ng-show="!loading">There are no recipients yet.</td>
+                    </tr>
+                    <tr
+                        data-ng-show="!loading && recipients.length > 0"
+                        data-ng-repeat="recipient in recipients"
+                    >
+                        <td><span data-ng-bind="recipient.id"></span>.</td>
+                        <td data-ng-bind="recipient.first_name"></td>
+                        <td data-ng-bind="recipient.last_name"></td>
+                        <td><code data-ng-bind="recipient.mail"></code></td>
+                        <td><code data-ng-bind="recipient.token"></code></td>
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <a class="btn btn-default disabled">Edit</a>
+                                <a class="btn btn-default disabled">Unsubscribe</a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

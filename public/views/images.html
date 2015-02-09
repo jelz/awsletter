@@ -37,12 +37,17 @@
                     <img data-ng-src="{{ item.url }}">
                 </div>
                 <div class="btn-group btn-group-xs">
-                    <a href data-ng-click="remove(item.key)" class="btn btn-default">remove</a>
+                    <a href data-ng-click="remove(item.key)" class="btn btn-default">
+                        Remove
+                    </a>
                     <a
                         href class="btn btn-default"
                         data-ng-attr-title="Key: {{ item.key }}, URL: {{ item.url }}"
                     >
-                        details
+                        Details
+                    </a>
+                    <a href data-ng-click="useAsTop(item.url)" class="btn btn-default">
+                        Use as top
                     </a>
                 </div>
             </div>

@@ -14,6 +14,10 @@
                         type="text" data-ng-model="message.topic"
                         class="form-control" id="f-compose-topic"
                     >
+                    <div class="help-block">
+                        Make topic as interesting as you can
+                        (<span data-ng-bind="message.topic.length"></span>/50).
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -23,6 +27,21 @@
                         type="text" data-ng-model="message.preheader"
                         class="form-control" id="f-compose-preheader"
                     >
+                    <div class="help-block">
+                        Preheader will be visible in mail clients that support it
+                        (<span data-ng-bind="message.preheader.length"></span>/50).
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" data-ng-show="message.top.length > 0">
+                <div class="col-sm-2 control-label">
+                    <label class="top-image-label">Top image:</label>
+                    <button data-ng-click="message.top = ''" class="btn btn-default btn-sm">
+                        Remove
+                    </button>
+                </div>
+                <div class="col-sm-9">
+                    <img data-ng-src="{{ message.top }}" class="img-thumbnail">
                 </div>
             </div>
             <div class="form-group">
@@ -32,11 +51,31 @@
                         rows="10" data-ng-model="message.content"
                         class="form-control" id="f-compose-content"
                     ></textarea>
+                    <div class="help-block">
+                        You can use codes and placeholders here.
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-9">
-                    <button class="btn btn-default">Dispatch message</button>
+                    <div class="btn-group">
+                        <button
+                            class="btn btn-default"
+                            data-ng-click="dispatch()"
+                            data-ng-show="recipientCount > 0"
+                        >
+                            <strong>Dispatch message</strong>
+                        </button>
+                        <button class="btn btn-default" data-ng-click="reset()">
+                            Reset form
+                        </button>
+                    </div>
+                    <div class="help-block" data-ng-show="recipientCount">
+                        This message will be sent to <span data-ng-bind="recipientCount"></span> recipient(s).
+                    </div>
+                    <div class="help-block" data-ng-show="recipientCount === 0">
+                        There are no recipients, so you can't dispatch message.
+                    </div>
                 </div>
             </div>
         </form>

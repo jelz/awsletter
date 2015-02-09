@@ -57,3 +57,54 @@ input, textarea {
 .upload-help {
     margin-bottom: 0;
 }
+
+.top-image-label {
+    display: block;
+}
+
+#loader-overlay {
+    position: fixed;
+    z-index: 9999;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+#loader-overlay .loader-progress {
+    text-align: center;
+    font-size: 100px;
+    color: #fff;
+}
+
+/* by @tobiasahlin - http://tobiasahlin.com/spinkit/ */
+#loader-overlay .spinner {
+    width: 120px;
+    height: 120px;
+    margin: 100px auto 50px;
+    background-color: #fff;
+    border-radius: 100%;
+    animation: scaleout 1.0s infinite ease-in-out;
+    -webkit-animation: scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+    0% {
+        -webkit-transform: scale(0.0);
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes scaleout {
+    0% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}

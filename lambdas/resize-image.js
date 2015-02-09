@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
-var THUMBNAIL_WIDTH = 400;
+var RESIZED_WIDTH = 400;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -90,7 +90,7 @@ function createPutParams(e, body) {
 function resize(data, cb) {
     require('imagemagick').resize({
         srcData: data,
-        width: THUMBNAIL_WIDTH
+        width: RESIZED_WIDTH
     }, function(err, out) {
         if (err) { return cb(err); }
         cb(null, new Buffer(out, 'binary'));

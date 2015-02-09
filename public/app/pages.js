@@ -32,15 +32,11 @@ window.AWSLETTER.controller('NavCtrl', function($scope, AmazonLogin) {
     $scope.profile = AmazonLogin.getProfile();
     $scope.logout = AmazonLogin.logout;
 
-    $scope.$on('amazon:login', handle(true));
-    $scope.$on('amazon:logout', handle(false));
+    $scope.$on('amazon:login', function(e, profile) {
+        $scope.isLogged = true;
+        $scope.profile = profile;
 
-    function handle(isLogged) {
-        return function(e, profile) {
-            $scope.profile = profile;
-            $scope.isLogged = isLogged;
-        };
-    }
+    });
 });
 
 window.AWSLETTER.controller('HomeCtrl', function($scope, $location, AmazonLogin) {
@@ -55,7 +51,7 @@ window.AWSLETTER.controller('HomeCtrl', function($scope, $location, AmazonLogin)
 });
 
 window.AWSLETTER.controller('ComposeCtrl', function($scope) {
-    $scope.message = { topic: '', content: '' };
+    $scope.message = { topic: '', preheader: '', content: '' };
 });
 
 window.AWSLETTER.controller('ImagesCtrl', function($scope, $location, ImageRepo) {

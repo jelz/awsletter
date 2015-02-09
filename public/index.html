@@ -1,25 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>awsletter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext">
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body data-ng-cloak>
-        <h1>awsletter</h1>
+    <body>
 
-        <div data-ng-controller="NavCtrl">
-            <div data-ng-show="isLogged">
-                <a href="#/compose">Compose</a>
-                <a href="#/images">Manage images</a>
-                <a href="#/recipients">Recipients</a>
-                <a href data-ng-click="logout()">Logout</a>
-                <span data-ng-show="profile.name">
-                    (<span data-ng-bind="profile.name"></span>)
-                </span>
+        <div class="container" data-ng-cloak>
+            <div data-ng-controller="NavCtrl" class="page-header" id="header">
+                <h1>awsletter <small>awsletter.elzbieciak.pl</small></h1>
+
+                <div data-ng-show="isLogged" class="btn-group header-nav">
+                    <a href="#/compose" class="btn btn-default">Compose</a>
+                    <a href="#/images" class="btn btn-default">Images</a>
+                    <a href="#/recipients" class="btn btn-default">Recipients</a>
+                    <a href data-ng-click="logout()" class="btn btn-default">
+                        Logout <span data-ng-bind="profile.name"></span>
+                    </a>
+                </div>
+
+                <div data-ng-show="!isLogged" class="btn-group header-nav">
+                    <a href="#/home" class="btn btn-default">Home page</a>
+                </div>
             </div>
-        </div>
 
-        <div data-ng-view></div>
+            <div data-ng-view id="content"></div>
+        </div>
 
         <!-- vendors -->
         <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.8.min.js"></script>

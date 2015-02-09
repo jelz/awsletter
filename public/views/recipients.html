@@ -1,3 +1,31 @@
 <div id="page-recipients">
-    <h2>Recipients</h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="content-header">
+                List of recipients (<span data-ng-bind="recipients.length || 0"></span>)
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 ">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>E-mail address</th>
+                        <th>Unsubscribe token</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-show="!recipients.length">
+                        <td colspan=6"">There are no recipients yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

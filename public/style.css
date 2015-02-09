@@ -1,0 +1,59 @@
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+input, textarea {
+    font-family: monospace;
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+#amazon-login-btn {
+    display: block;
+    width: 312px;
+    margin: 50px auto;
+}
+
+#amazon-login-btn img {
+    display: block;
+}
+
+#header {
+    position: relative;
+}
+
+.header-nav {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+.content-header {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, .7);
+}
+
+.image-wrapper img {
+    display: block;
+    max-width: 100%;
+}
+
+.upload-help {
+    margin-bottom: 0;
+}

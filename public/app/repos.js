@@ -56,6 +56,8 @@ window.AWSLETTER.factory('ImageRepo', function($q, $timeout, AWSHelper, CONFIG) 
 
         S3.upload(params, function(err) {
             if (err) { return d.reject(err); }
+
+            filePicker.value = '';
             d.resolve(params.Key.replace(/^uploaded-/, ''));
         });
 

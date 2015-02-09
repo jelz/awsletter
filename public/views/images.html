@@ -1,23 +1,51 @@
 <div id="images-page">
-    <h2>Manage images</h2>
-
-    <div data-ng-show="!loading">
-        <input type="file" id="file-picker">
-        <button data-ng-click="upload()">Upload</button>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="content-header">Manage images</h2>
+        </div>
     </div>
 
-    <div data-ng-show="loading">Loading...</div>
-    <div data-ng-show="!loading && images.length < 1">
-        There are no images yet.
+    <div data-ng-show="loading" class="row">
+        <div class="col-sm-12">Loading...</div>
     </div>
 
-    <div data-ng-show="!loading && images.length > 0">
-        <div data-ng-repeat="item in images">
-            <p>
-                <span data-ng-bind="item.key"></span>
-                <a href data-ng-click="remove(item.key)">remove</a>
-            </p>
-            <img data-ng-src="{{ item.url }}">
+    <div data-ng-show="!loading" class="row">
+        <div class="col-sm-6">
+            <form class="form-inline well well-sm">
+                <div class="form-group">
+                    <label for="file-picker">Select file to upload:</label>
+                    <input type="file" id="file-picker">
+                    <p class="help-block upload-help">Only JPEG files are accepted.</p>
+                </div>
+                <div class="form-group">
+                    <button data-ng-click="upload()" class="btn btn-default">
+                        Upload this file
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div data-ng-show="!loading && images.length < 1" class="row">
+        <div class="col-sm-12">There are no images yet.</div>
+    </div>
+
+    <div data-ng-show="!loading && images.length > 0" class="row">
+        <div class="col-sm-3" data-ng-repeat="item in images">
+            <div class="image-item well well-sm">
+                <div class="image-wrapper">
+                    <img data-ng-src="{{ item.url }}">
+                </div>
+                <div class="btn-group btn-group-xs">
+                    <a href data-ng-click="remove(item.key)" class="btn btn-default">remove</a>
+                    <a
+                        href class="btn btn-default"
+                        data-ng-attr-title="Key: {{ item.key }}, URL: {{ item.url }}"
+                    >
+                        details
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

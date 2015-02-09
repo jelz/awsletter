@@ -1,11 +1,44 @@
 <div id="page-compose">
-    <h2>Compose</h2>
-    <label>
-        Topic:
-        <input type="text" data-ng-model="message.topic">
-    </label>
-    <label>
-        Content:
-        <textarea data-ng-model="message.content"></textarea>
-    </label>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="content-header">Compose new message</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <form class="form-horizontal col-sm-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="f-compose-topic">Topic:</label>
+                <div class="col-sm-9">
+                    <input
+                        type="text" data-ng-model="message.topic"
+                        class="form-control" id="f-compose-topic"
+                    >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="f-compose-preheader">Preheader:</label>
+                <div class="col-sm-9">
+                    <input
+                        type="text" data-ng-model="message.preheader"
+                        class="form-control" id="f-compose-preheader"
+                    >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="f-compose-content">Content:</label>
+                <div class="col-sm-9">
+                    <textarea
+                        rows="10" data-ng-model="message.content"
+                        class="form-control" id="f-compose-content"
+                    ></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-9">
+                    <button class="btn btn-default">Dispatch message</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

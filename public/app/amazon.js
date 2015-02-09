@@ -6,13 +6,14 @@ window.AWSLETTER.factory('LoginWithAmazon', function(CONFIG) {
     return AMAZON_LOGIN;
 });
 
-window.AWSLETTER.factory('AWSHelper', function() {
+window.AWSLETTER.factory('AWSHelper', function(CONFIG) {
     var AWS = window.AWS;
+
+    AWS.config.update({ region: CONFIG.aws.region });
 
     return {
         getGlobalObject: function() { return AWS; },
-        createInstance: createInstance,
-        getInstance: undefined
+        createInstance: createInstance
     };
 
     function createInstance(serviceName, params) {
@@ -77,9 +78,8 @@ window.AWSLETTER.factory('AmazonLogin', function(
 
     function logout() {
         LoginWithAmazon.logout();
-        $rootScope.$broadcast('amazon:logout');
         forgetLogin();
-        deconfigureAWS();
+        $rootScope.$broadcast('amazon:logout');
     }
 
     function readToken() {
@@ -96,17 +96,13 @@ window.AWSLETTER.factory('AmazonLogin', function(
     }
 
     function configureAWS() {
-        AWS.config.region = CONFIG.aws.region;
-        AWS.config.credentials = AWSHelper.createInstance('WebIdentityCredentials', {
-            RoleArn: CONFIG.aws.roleArn,
-            ProviderId: 'www.amazon.com',
-            WebIdentityToken: readToken()
+        AWS.config.update({
+            credentials: AWSHelper.createInstance('WebIdentityCredentials', {
+                RoleArn: CONFIG.aws.roleArn,
+                ProviderId: 'www.amazon.com',
+                WebIdentityToken: readToken()
+            })
         });
-    }
-
-    function deconfigureAWS() {
-        delete AWS.config.region;
-        delete AWS.config.credentials;
     }
 });
 
@@ -119,7 +115,9 @@ window.AWSLETTER.run(function($rootScope, $location, AmazonLogin) {
     });
 
     $rootScope.$on('amazon:login', redirect('compose'));
-    $rootScope.$on('amazon:logout', redirect('home'));
+    $rootScope.$on('amazon:logout', function() {
+        window.location.reload();
+    });
 
     function redirect(page) {
         return function () { $location.path('/' + page); };

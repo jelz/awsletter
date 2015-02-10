@@ -5,9 +5,11 @@
     "navigator": false,
     "document": false,
     "console": false,
-    "__dirname": false,
     "require": false,
     "module": false,
+    "exports": false,
+    "__dirname": false,
+    "Buffer": false,
     "angular": false
   }
 }

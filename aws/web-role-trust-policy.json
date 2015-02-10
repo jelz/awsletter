@@ -9,7 +9,7 @@
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
-          "www.amazon.com:app_id": "amzn1.application.{{appid}}"
+          "www.amazon.com:app_id": "amzn1.application.{{app_id}}"
         }
       }
     }

@@ -17,7 +17,12 @@ module.exports = function(g) {
         jshint: {
             app: {
                 options: { jshintrc: true },
-                src: ['Gruntfile.js', 'public/app/*.js']
+                src: [
+                    'Gruntfile.js',
+                    'public/app/*.js',
+                    'config/*.js',
+                    'lambdas/*.js'
+                ]
             }
         },
 

@@ -1,0 +1,38 @@
+<div id="page-summary">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="content-header">Dispatch summary</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Message topic</td>
+                        <td><strong data-ng-bind="message.topic"></strong></td>
+                    </tr>
+                    <tr>
+                        <td>No of <span class="label label-info">scheduled</span> dispatches</td>
+                        <td><strong class="badge" data-ng-bind="result.scheduled"></strong></td>
+                    </tr>
+                    <tr>
+                        <td>No of <span class="label label-success">successful</span> dispatches</td>
+                        <td><strong class="badge" data-ng-bind="result.success"></strong></td>
+                    </tr>
+                    <tr>
+                        <td>No of <span class="label label-danger">failed</span> dispatches</td>
+                        <td><strong class="badge" data-ng-bind="result.error"></strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

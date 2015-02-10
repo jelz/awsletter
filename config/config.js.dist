@@ -1,10 +1,14 @@
 window.AWSLETTER_CONFIG = {
     amazonLogin: {
-        clientId: 'amzn1.application-oa2-client.{{clientid}}'
+        clientId: 'amzn1.application-oa2-client.{{client_id}}'
     },
     aws: {
-        region: 'eu-west-1',
-        roleArn: 'arn:aws:iam::{{awsid}}:role/{{rolename}}',
-        imagesBucket: '{{bucketname}}'
-    }
+        region: '{{region}}',
+        roleArn: 'arn:aws:iam::{{aws_account_id}}:role/{{web_role_name}}',
+        imagesBucketName: '{{images_bucket_name}}',
+        mailFunctionName: '{{mail_fn_name}}',
+        smsFunctionName: '{{sms_fn_name}}'
+    },
+    notificationPhoneNumber: '+{{phone_no}}',
+    disableDelivery: false
 };

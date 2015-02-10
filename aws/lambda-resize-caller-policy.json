@@ -7,7 +7,7 @@
         "lambda:InvokeFunction"
       ],
       "Resource": [
-        "arn:aws:lambda:eu-west-1:{{awsid}}:function:{{fnname}}"
+        "arn:aws:lambda:{{region}}:{{aws_account_id}}:function:{{resize_fn_name}}"
       ]
     }
   ]

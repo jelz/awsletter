@@ -116,7 +116,9 @@ window.AWSLETTER.run(function($rootScope, $location, AmazonLogin) {
 
     $rootScope.$on('amazon:login', redirect('compose'));
     $rootScope.$on('amazon:logout', function() {
-        window.location.reload();
+        var l = window.location;
+
+        window.location.href = l.protocol + '//' + l.host;
     });
 
     function redirect(page) {

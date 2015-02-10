@@ -9,7 +9,7 @@
       "Action": "sts:AssumeRole",
       "Condition": {
         "StringLike": {
-          "sts:ExternalId": "arn:aws:s3:::{{bucketname}}"
+          "sts:ExternalId": "arn:aws:s3:::{{images_bucket_name}}"
         }
       }
     }

@@ -19,7 +19,7 @@
         "s3:DeleteObject"
       ],
       "Resource": [
-        "arn:aws:s3:::{{bucketname}}/*"
+        "arn:aws:s3:::{{images_bucket_name}}/*"
       ]
     }
   ]

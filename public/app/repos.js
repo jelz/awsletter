@@ -1,7 +1,7 @@
 window.AWSLETTER.factory('ImageRepo', function($q, $timeout, AWSHelper, CONFIG) {
 
     var TYPE = 'image/jpeg';
-    var BUCKET = CONFIG.aws.imagesBucket;
+    var BUCKET = CONFIG.aws.imagesBucketName;
     var REGION = CONFIG.aws.region;
 
     var S3 = AWSHelper.createInstance('S3', { params: { Bucket: BUCKET } });

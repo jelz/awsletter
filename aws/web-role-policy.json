@@ -7,7 +7,7 @@
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:s3:::{{bucketname}}"
+        "arn:aws:s3:::{{images_bucket_name}}"
       ]
     },
     {
@@ -18,7 +18,7 @@
         "s3:DeleteObject"
       ],
       "Resource": [
-        "arn:aws:s3:::{{bucketname}}/*"
+        "arn:aws:s3:::{{images_bucket_name}}/*"
       ]
     },
     {
@@ -27,7 +27,9 @@
         "lambda:InvokeFunction"
       ],
       "Resource": [
-        "arn:aws:lambda:eu-west-1:{{awsid}}:function:{{fnname}}"
+        "arn:aws:lambda:{{region}}:{{aws_account_id}}:function:{{test_fn_name}}",
+        "arn:aws:lambda:{{region}}:{{aws_account_id}}:function:{{mail_fn_name}}",
+        "arn:aws:lambda:{{region}}:{{aws_account_id}}:function:{{sms_fn_name}}"
       ]
     }
   ]

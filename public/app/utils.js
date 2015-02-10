@@ -37,19 +37,19 @@ window.AWSLETTER.factory('LocalStore', function() {
     function has(prefixed) {
         return function(key) {
             return !!(read(prefixed)(key));
-        }
+        };
     }
 
     function read(prefixed) {
         return function(key) {
             return JSON.parse(STORAGE.getItem(prefixed(key)) || 'null');
-        }
+        };
     }
 
     function remove(prefixed) {
         return function(key) {
             STORAGE.removeItem(prefixed(key));
-        }
+        };
     }
 });
 

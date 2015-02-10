@@ -1,0 +1,6 @@
+{
+  "accessKey": "ABC123",
+  "secret": "QWERTY456",
+  "bucket": "bucketname",
+  "region": "eu-west-1"
+}

@@ -60,7 +60,7 @@ window.AWSLETTER.controller('LoaderCtrl', function($scope, $rootScope) {
         if ($scope.progress.goal > 0) {
             $scope.progress.current += 1;
         }
-    })
+    });
 });
 
 window.AWSLETTER.controller('HomeCtrl', function($scope, $location, AmazonLogin) {

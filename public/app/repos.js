@@ -122,7 +122,7 @@ window.AWSLETTER.factory('RecipientRepo', function($q) {
 
     var FIXTURES = [
         { id: 1, first_name: 'Jakub', last_name: 'Elżbieciak', mail: 'jelz@post.pl', token: 'sA3W17' },
-        { id: 2, first_name: 'Kuba', last_name: 'Elżbieciak', mail: 'jelz+kuba@post.pl', token: 'GHf44i'}
+        { id: 2, first_name: 'Kuba', last_name: 'Elżbieciak', mail: 'jakub.elzbieciak@xsolve.pl', token: 'GHf44i'}
     ];
 
     return {

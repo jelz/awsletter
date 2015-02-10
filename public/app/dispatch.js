@@ -1,9 +1,3 @@
-window.AWSLETTER.factory('MailTemplate', function() {
-    return {
-
-    };
-});
-
 window.AWSLETTER.factory('MailSender', function(
     $log, $rootScope, $q, $timeout, AWSHelper, CONFIG
 ) {
@@ -22,7 +16,7 @@ window.AWSLETTER.factory('MailSender', function(
 
         if (CONFIG.disableDelivery) {
             d.resolve(true);
-            $log.debug('MailSender.send: delivery disabled');
+            $log.info('MailSender.send: delivery disabled', message);
         } else {
             lambda.invokeAsync(params, function(err, data) {
                 if (err) { return d.reject(err); }
@@ -38,7 +32,7 @@ window.AWSLETTER.factory('MailSender', function(
         var result = { error: 0, success: 0, scheduled: messages.length };
 
         messages = angular.copy(messages);
-        delay = delay || 250;
+        delay = delay || 1500;
 
         sendNext();
 
@@ -76,7 +70,7 @@ window.AWSLETTER.factory('SMSSender', function($log, $q, AWSHelper, CONFIG) {
 
         if (CONFIG.disableDelivery) {
             d.resolve(true);
-            $log.debug('SMSSender.send: delivery disabled');
+            $log.info('SMSSender.send: delivery disabled', message);
         } else {
             lambda.invokeAsync(params, function (err, data) {
                 if (err) { return d.reject(err); }
@@ -100,7 +94,9 @@ window.AWSLETTER.factory('SMSSender', function($log, $q, AWSHelper, CONFIG) {
     }
 });
 
-window.AWSLETTER.factory('Dispatcher', function(RecipientRepo, MailSender, SMSSender) {
+window.AWSLETTER.factory('Dispatcher', function(
+    RecipientRepo, MailBuilder, MailSender, SMSSender
+) {
     return { dispatch: dispatch };
 
     function dispatch(msg) {
@@ -113,8 +109,7 @@ window.AWSLETTER.factory('Dispatcher', function(RecipientRepo, MailSender, SMSSe
 
     function sendMessages(msg) {
         return function(recipients) {
-            //var messages = prepareMessages(msg, recipients);
-            var messages = [ {}, {} ];
+            var messages = MailBuilder.buildMultiple(msg, recipients);
 
             return MailSender.sendMultiple(messages);
         };

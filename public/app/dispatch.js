@@ -12,7 +12,7 @@ window.AWSLETTER.factory('MailSender', function(
 
     function send(message) {
         var d = $q.defer();
-        var params = { InvokeArgs: JSON.stringify(message) };
+        var params = { InvokeArgs: AWSHelper.createInvokeArgs(message) };
 
         if (CONFIG.disableDelivery) {
             d.resolve(true);
@@ -66,7 +66,7 @@ window.AWSLETTER.factory('SMSSender', function($log, $q, AWSHelper, CONFIG) {
 
     function send(message) {
         var d = $q.defer();
-        var params = { InvokeArgs: JSON.stringify(message) };
+        var params = { InvokeArgs: AWSHelper.createInvokeArgs(message) };
 
         if (CONFIG.disableDelivery) {
             d.resolve(true);

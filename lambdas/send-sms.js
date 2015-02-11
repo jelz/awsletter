@@ -11,19 +11,20 @@ var qs = require('querystring');
 
 exports.handler = function(e, ctx) {
     var postData, opts, req;
+    var params = prepareParams(e);
 
-    log('Received event:'); log(e);
+    log('Received event:'); log(params);
 
-    if (isContentValid(e)) {
+    if (!params || !isContentValid(params)) {
         return ctx.done('Invalid content.');
     }
 
-    postData = createPostData(e);
+    postData = createPostData(params);
     opts = createOptions(postData);
     req = https.request(opts, responseHandler(ctx));
 
-    req.on('error', function(e) {
-        log('Twilio request error.'); log(e);
+    req.on('error', function(err) {
+        log('Twilio request error.'); log(err);
         ctx.done('Finished with error.');
     });
 
@@ -37,10 +38,18 @@ function log(d) {
     console.log(typeof d === 'object' ? JSON.stringify(d, null, '  ') : d);
 }
 
+function prepareParams(e) {
+    try {
+        return JSON.parse(JSON.stringify(e), function(k, v) {
+            return typeof v === 'string' ? decodeURIComponent(v) : v;
+        });
+    } catch (ex) { return false; }
+}
+
 function isContentValid(e) {
     return (
-        !e.content || typeof e.content !== 'string' || e.content.length < 1 ||
-        !e.to || typeof e.to !== 'string' || !/^\+[0-9]{6,20}$/.test(e.to)
+        e.to && typeof e.to === 'string' && /^\+[0-9]{6,20}$/.test(e.to) &&
+        e.content && typeof e.content === 'string' && e.content.length > 0
     );
 }
 

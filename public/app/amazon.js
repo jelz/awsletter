@@ -13,11 +13,18 @@ window.AWSLETTER.factory('AWSHelper', function(CONFIG) {
 
     return {
         getGlobalObject: function() { return AWS; },
-        createInstance: createInstance
+        createInstance: createInstance,
+        createInvokeArgs: createInvokeArgs
     };
 
     function createInstance(serviceName, params) {
         return new AWS[serviceName](params);
+    }
+
+    function createInvokeArgs(obj) {
+        return JSON.stringify(obj, function(k, v) {
+            return typeof v === 'string' ? encodeURIComponent(v) : v;
+        });
     }
 });
 

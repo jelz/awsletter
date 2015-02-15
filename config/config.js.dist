@@ -10,5 +10,7 @@ window.AWSLETTER_CONFIG = {
         smsFunctionName: '{{sms_fn_name}}'
     },
     notificationPhoneNumber: '+{{phone_no}}',
-    disableDelivery: false
+    disableMailDelivery: false,
+    disableSmsDelivery: false,
+    sender: "{{ses_verified_mail}}"
 };

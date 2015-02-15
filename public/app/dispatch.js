@@ -14,7 +14,7 @@ window.AWSLETTER.factory('MailSender', function(
         var d = $q.defer();
         var params = { InvokeArgs: AWSHelper.createInvokeArgs(message) };
 
-        if (CONFIG.disableDelivery) {
+        if (CONFIG.disableMailDelivery) {
             d.resolve(true);
             $log.info('MailSender.send: delivery disabled', message);
         } else {
@@ -68,7 +68,7 @@ window.AWSLETTER.factory('SMSSender', function($log, $q, AWSHelper, CONFIG) {
         var d = $q.defer();
         var params = { InvokeArgs: AWSHelper.createInvokeArgs(message) };
 
-        if (CONFIG.disableDelivery) {
+        if (CONFIG.disableSmsDelivery) {
             d.resolve(true);
             $log.info('SMSSender.send: delivery disabled', message);
         } else {
@@ -83,7 +83,7 @@ window.AWSLETTER.factory('SMSSender', function($log, $q, AWSHelper, CONFIG) {
 
     function sendNotification(message, result) {
         var content = [
-            'awsletter.elzbieciak.pl. ',
+            '[awsletter notification] ',
             'Dispatch of "' + message.topic + '" message finished. ',
             'Scheduled: ' + result.scheduled + ', ',
             'successful: ' + result.success + ', ',

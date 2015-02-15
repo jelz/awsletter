@@ -1,4 +1,4 @@
-window.AWSLETTER.factory('MailBuilder', function(Mail) {
+window.AWSLETTER.factory('MailBuilder', function(Mail, CONFIG) {
     return {
         build: build,
         buildMultiple: buildMultiple
@@ -9,7 +9,7 @@ window.AWSLETTER.factory('MailBuilder', function(Mail) {
         var body = prepareBody(message, recipient);
 
         return {
-            Source: 'awsletter <awsletter@elzbieciak.pl>',
+            Source: CONFIG.sender,
             Destination: { ToAddresses: [ recipient.mail ] },
             Message: {
                 Subject: { Data: topic, Charset: 'utf-8' },
@@ -89,7 +89,7 @@ window.AWSLETTER.factory('Mail', function() {
         function addUnsubscribeLink() {
             html.push('<div style="padding: 10px; font-size: 11px; ');
             html.push('text-align: right; border-top: 1px dashed #d8d8d8;">');
-            html.push('<a target="_blank" href="http://awsletter.elzbieciak.pl/unsub/');
+            html.push('<a target="_blank" href="http://google.com/'); // @todo
             html.push(recipient.token + '">Click to unsubscribe</a></div>');
         }
 

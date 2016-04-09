@@ -1,6 +1,0 @@
-{
-  "accessKey": "{{aws_access_key}}",
-  "secret": "{{aws_secret}}",
-  "bucket": "{{images_bucket_name}}",
-  "region": "{{region}}"
-}

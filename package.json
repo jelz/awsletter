@@ -2,10 +2,11 @@
   "name": "awsletter",
   "version": "0.0.1",
   "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "serve": "http-server -c-1 -p8000"
+  },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-aws": "^0.4.0",
-    "grunt-contrib-connect": "^0.9.0",
-    "grunt-contrib-jshint": "^0.11.0"
+    "http-server": "^0.9.0"
   }
 }
